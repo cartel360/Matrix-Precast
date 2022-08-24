@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/BFC.png' %}" alt="Logo Image" style="width:200px; height:50px;"></a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+    </div>
+</nav>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg1.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Our <span>Gallery</span></h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home:index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'home:gallery' %}">Gallery </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-gallery ftco-section ftco-no-pb mb-4" id="gallery-section">
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <h2 class="mb-1">Breakthrough Family Chapel Photo Gallery</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for pic in gallerys %}
+            <div class="col-md-3 ftco-animate">
+                <a href="{{ pic.image.url }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({{ pic.image.url }});">
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <br> <br>
+</section>
+
+{% endblock %}

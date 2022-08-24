@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/BFC.png' %}" alt="Logo Image" style="width:200px; height:50px;"></a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+    </div>
+</nav>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg1.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Our <span>Blogs</span></h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home:index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'home:blogs' %}">Blogs </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light" id="blog-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Read the Latest Blog</h2>
+            </div>
+        </div>
+        <div class="row d-flex">
+            {% for blog in blogs %}
+            <div class="col-md-4 d-flex ftco-animate">
+                <div class="blog-entry justify-content-end">
+                    <a href="single.html" class="block-20" style="background-image: url({{ blog.cover.url }});">
+                    </a>
+                    <div class="text float-right d-block">
+                        <div class="d-flex align-items-center pt-2 mb-4 topp">
+                            <div class="one mr-2">
+                                <span class="day">{{ blog.created_on|date:'d' }}</span>
+            </div>
+            <div class="two">
+                <span class="yr">{{ blog.created_on.year }}</span>
+                <span class="mos">{{ blog.created_on|date:'F' }}</span>
+            </div>
+        </div>
+        <h3 class="heading"><a href="single.html">{{ blog.title }}</a></h3>
+        <p>{{ blog.description }}.</p>
+        <div class="d-flex align-items-center mt-4 meta">
+            <p class="mb-0"><a href="{% url 'home:detail' blog.slug %}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+            <p class="ml-auto mb-0">
+                <a href="#" class="mr-2">{{ blog.author }}</a>
+                <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+            </p>
+        </div>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+</section>
+
+{% endblock %}

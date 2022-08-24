@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/BFC.png' %}" alt="Logo Image" style="width:200px; height:50px;"></a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+    </div>
+</nav>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg1.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Our <span>Blogs</span></h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home:index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'home:blogs' %}">Blogs <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="#">{{ post.title }} </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <p>
+                    <img src="{{ post.cover.url }}" alt="" class="img-fluid">
+                </p> 
+                <h2 class="mb-3">{{ post.title }}</h2>
+                <p style="color:black;">{{ post.content}}</p>
+            </div>
+            <div class="col-lg-4 ftco-animate">
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading-sidebar">Recent Blog</h3>
+                    <div class="block-21 mb-4 d-flex">
+                      <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                      <div class="text">
+                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                        <div class="meta">
+                          <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a>
+            </div>
+            <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+            <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+<!-- .section -->
+
+
+
+{% endblock %}

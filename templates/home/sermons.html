@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/BFC.png' %}" alt="Logo Image" style="width:200px; height:50px;"></a>
+        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+    </div>
+</nav>
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg1.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Our <span>Sermons</span></h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home:index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'home:sermons' %}">Sermons </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section bg-light" id="sermons-section">
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-12 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Breakthrough Family Chapel Sermons</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for sermon in sermons %}
+            <div class="col-md-4">
+                <div class="sermon-wrap ftco-animate">
+                    <div class="img d-flex align-items-center justify-content-center" style="background-image: url({{ sermon.cover.url }});">
+                        <div class="text-content p-4 text-center">
+                            <span>by pastor:</span>
+                    <h3>{{ sermon.preacher }}</h3>
+                    <br>
+                    <p class="">
+                        <a href="{{ sermon.link }}" class="btn-custom mb-2 p-2 text-center popup-vimeo"><span class="icon-play"></span> Watch</a>
+                    </p>
+            </div>
+        </div>
+        <div class="text pt-3 text-center">
+            <h2 class="mb-0"><a href="sermon.html">{{ sermon.title }}</a></h2>
+            <div class="meta">
+                <p class="mb-0">
+                    <span>{{ sermon.date }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+</section>
+
+{% endblock %}
